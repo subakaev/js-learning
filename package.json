@@ -1,0 +1,19 @@
+{
+  "name": "js-learning",
+  "version": "0.0.1",
+  "description": "The project is for JavaScript learning",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/subakaev/js-learning.git"
+  },
+  "author": "Sergey Bakaev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/subakaev/js-learning/issues"
+  },
+  "homepage": "https://github.com/subakaev/js-learning#readme"
+}
