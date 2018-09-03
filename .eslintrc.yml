@@ -11,3 +11,16 @@ parser: babel-eslint
 extends:
   - 'airbnb-base'
   - 'plugin:jest/recommended'
+
+# rules:
+#   object-curly-newline:
+#     - "error"
+#     - {
+#       ImportDeclaration: never,
+#       ObjectExpression: always,
+#       ObjectPattern: {
+#         multiline: true,
+#         minProperties: 3,
+#         consistent: true
+#       }
+#     }
