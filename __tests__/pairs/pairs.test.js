@@ -1,7 +1,9 @@
 import { cons, car, cdr } from '../../src/pairs/pairs';
 
 test('Should create pair and it must be a function', () => {
-  expect(typeof cons(1, 1)).toBe('function');
+  const pair = cons(1, 2);
+  expect(typeof pair).toBe('function');
+  expect(pair('qwerty')).toBe(undefined);
 });
 
 test('car should return correct value', () => {
