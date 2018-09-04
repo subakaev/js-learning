@@ -22,3 +22,5 @@ export const isPair = pair => typeof pair === 'function' && pair.pair === true;
 
 export const car = pair => pair(carMessage);
 export const cdr = pair => pair(cdrMessage);
+
+export const reversePair = pair => cons(cdr(pair), car(pair));
