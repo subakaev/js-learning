@@ -40,16 +40,23 @@ export const calculateDistance = (point) => {
 const startSegmentMessage = 'startSegment';
 const endSegmentMessage = 'endSegment';
 
-export const makeSegment = (point1, point2) => (msg) => {
-  switch (msg) {
-    case startSegmentMessage:
-      return point1;
-    case endSegmentMessage:
-      return point2;
-    default:
-      return undefined;
-  }
+export const makeSegment = (point1, point2) => {
+  const segment = (msg) => {
+    switch (msg) {
+      case startSegmentMessage:
+        return point1;
+      case endSegmentMessage:
+        return point2;
+      default:
+        return undefined;
+    }
+  };
+
+  segment.segment = true;
+  return segment;
 };
+
+export const isSegment = segment => typeof segment === 'function' && segment.segment === true;
 
 export const startSegment = segment => segment(startSegmentMessage);
 export const endSegment = segment => segment(endSegmentMessage);
