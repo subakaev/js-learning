@@ -1,5 +1,5 @@
 import {
-  cons, car, cdr, isPair, reversePair,
+  cons, car, cdr, isPair, reversePair, toString,
 } from '../../src/pairs/pairs';
 
 test('Should create pair and it must be a function', () => {
@@ -40,4 +40,9 @@ test('cdr should return correct value', () => {
 test('reversePair test', () => {
   expect(toString(reversePair(cons(1, 2)))).toEqual(toString(cons(2, 1)));
   expect(toString(reversePair(cons(-10, 22)))).toEqual(toString(cons(22, -10)));
+});
+
+test('toString test', () => {
+  expect(toString(cons(1, 2))).toEqual('(1, 2)');
+  expect(toString(cons(-1, -2))).toEqual('(-1, -2)');
 });

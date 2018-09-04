@@ -24,3 +24,5 @@ export const car = pair => pair(carMessage);
 export const cdr = pair => pair(cdrMessage);
 
 export const reversePair = pair => cons(cdr(pair), car(pair));
+
+export const toString = pair => `(${car(pair)}, ${cdr(pair)})`;
