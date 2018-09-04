@@ -1,6 +1,6 @@
 import {
   makePoint, getX, getY, toString, getQuadrant, getSymmetricalPoint,
-  calculateDistance, makeSegment, startSegment, endSegment, isSegment,
+  calculateDistance, makeSegment, startSegment, endSegment,
 } from '../../src/points/points';
 
 test('Should make point', () => {
@@ -46,8 +46,6 @@ test('segment test', () => {
   const p2 = makePoint(2, 2);
   const segment = makeSegment(p1, p2);
 
-  expect(isSegment(segment)).toBeTruthy();
-  expect(isSegment(() => {})).toBeFalsy();
   expect(segment('qwwerty')).toBeUndefined();
   expect(startSegment(segment)).toBe(p1);
   expect(endSegment(segment)).toBe(p2);

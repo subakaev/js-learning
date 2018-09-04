@@ -37,26 +37,7 @@ export const calculateDistance = (point) => {
   return Math.sqrt((x ** 2) + (y ** 2));
 };
 
-const startSegmentMessage = 'startSegment';
-const endSegmentMessage = 'endSegment';
+export const makeSegment = (point1, point2) => cons(point1, point2);
 
-export const makeSegment = (point1, point2) => {
-  const segment = (msg) => {
-    switch (msg) {
-      case startSegmentMessage:
-        return point1;
-      case endSegmentMessage:
-        return point2;
-      default:
-        return undefined;
-    }
-  };
-
-  segment.segment = true;
-  return segment;
-};
-
-export const isSegment = segment => typeof segment === 'function' && segment.segment === true;
-
-export const startSegment = segment => segment(startSegmentMessage);
-export const endSegment = segment => segment(endSegmentMessage);
+export const startSegment = segment => car(segment);
+export const endSegment = segment => cdr(segment);
