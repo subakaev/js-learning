@@ -91,3 +91,17 @@ export const concat = (list1, list2) => {
 
   return iter(reverse(list1), list2);
 };
+
+export const filter = (func, list) => {
+  const iter = (current, result) => {
+    if (isEmpty(current)) {
+      return reverse(result);
+    }
+
+    const first = head(current);
+
+    return iter(tail(current), func(first) ? cons(first, result) : result);
+  };
+
+  return iter(list, l());
+};
