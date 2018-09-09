@@ -2,6 +2,8 @@ import {
   cons as pairsCons, car, cdr, isPair,
 } from '../pairs/pairs';
 
+export const isEmpty = list => list === null;
+
 const isList = (list) => {
   if (list === null) {
     return true;
@@ -17,6 +19,10 @@ const isList = (list) => {
 const checkList = (list) => {
   if (!isList(list)) {
     throw new Error('Argument is not a list.');
+  }
+
+  if (isEmpty(list)) {
+    throw new Error('List is empty.');
   }
 };
 
@@ -34,8 +40,6 @@ export const tail = (list) => {
   return cdr(list);
 };
 
-export const isEmpty = list => list === null;
-
 export const toString = (list) => {
   const iter = (current, acc) => {
     if (isEmpty(current)) {
@@ -46,4 +50,20 @@ export const toString = (list) => {
   };
 
   return `(${iter(list, '')})`;
+};
+
+export const has = (list, element) => {
+  const iter = (current) => {
+    if (isEmpty(current)) {
+      return false;
+    }
+
+    if (head(current) === element) {
+      return true;
+    }
+
+    return iter(tail(current));
+  };
+
+  return iter(list);
 };

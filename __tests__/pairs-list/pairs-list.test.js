@@ -1,5 +1,5 @@
 import {
-  l, cons, head, tail, isEmpty, toString as listToString,
+  l, cons, head, tail, isEmpty, toString as listToString, has,
 } from '../../src/pairs-list/pairs-list';
 
 test('l test', () => {
@@ -8,6 +8,29 @@ test('l test', () => {
   const list = l(1, 2);
   expect(head(list)).toBe(1);
   expect(head(tail(list))).toBe(2);
+});
+
+test('should throw error', () => {
+  try {
+    head(l());
+  } catch (e) {
+    expect(e).toBeDefined();
+  }
+  try {
+    tail(l());
+  } catch (e) {
+    expect(e).toBeDefined();
+  }
+  try {
+    head(5);
+  } catch (e) {
+    expect(e).toBeDefined();
+  }
+  try {
+    tail(3);
+  } catch (e) {
+    expect(e).toBeDefined();
+  }
 });
 
 test('cons test', () => {
@@ -26,4 +49,11 @@ test('toString test', () => {
   expect(listToString(l())).toEqual('()');
   expect(listToString(l(1))).toEqual('(1)');
   expect(listToString(l(1, 2))).toEqual('(1, 2)');
+});
+
+test('has test', () => {
+  expect(has(l(), 2)).toBeFalsy();
+  expect(has(l(1, 2, 3), 10)).toBeFalsy();
+  expect(has(l(1), 1)).toBeTruthy();
+  expect(has(l(1, 2, 3), 2)).toBeTruthy();
 });
