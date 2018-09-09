@@ -94,3 +94,22 @@ export const wordsCount = (tagName, word, html) => {
   const reduceFunc = (tag, acc) => acc + wc(word, value(tag));
   return reduce(reduceFunc, 0, filter(tag => is(tagName, tag), html));
 };
+
+// const select = (tagName, html) => reduce((element, acc) => {
+//   const acc2 = hasChildren(element) ? concat(select(tagName, children(element)), acc) : acc;
+//   return is(tagName, element) ? consList(element, acc2) : acc2;
+// }, l(), html);
+
+// export const select2 = (tagName, html) => {
+//   const flatten = (list) => {
+//     const reduceFunc = (item, acc) => {
+//       const newAcc = consList(item, acc);
+
+//       return hasChildren(item) ? concat(flatten(children(item)), newAcc) : newAcc;
+//     };
+
+//     return reduce(reduceFunc, l(), list);
+//   }
+
+//   return filter(item => is(tagName, item), flatten(html));
+// };
