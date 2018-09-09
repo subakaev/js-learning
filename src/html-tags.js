@@ -70,6 +70,14 @@ export const reduce = (func, acc, dom) => {
   return iter(dom, acc);
 };
 
+export const reduce2 = (func, acc, dom) => {
+  if (isEmpty(dom)) {
+    return acc;
+  }
+
+  return reduce2(func, func(head(dom), acc), tail(dom));
+};
+
 export const emptyTagsCount = (tagName, dom) => {
   const reduceFunc = (element, acc) => (is(tagName, element) && value(element) === '' ? acc + 1 : acc);
 
