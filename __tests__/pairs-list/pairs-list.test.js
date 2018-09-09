@@ -1,5 +1,6 @@
 import {
-  l, cons, head, tail, isEmpty, toString as listToString, has,
+  l, cons, head, tail, isEmpty, toString as listToString,
+  has, reverse, concat,
 } from '../../src/pairs-list/pairs-list';
 
 test('l test', () => {
@@ -56,4 +57,17 @@ test('has test', () => {
   expect(has(l(1, 2, 3), 10)).toBeFalsy();
   expect(has(l(1), 1)).toBeTruthy();
   expect(has(l(1, 2, 3), 2)).toBeTruthy();
+});
+
+test('reverse test', () => {
+  expect(listToString(reverse(l()))).toEqual('()');
+  expect(listToString(reverse(l(1)))).toEqual('(1)');
+  expect(listToString(reverse(l(1, 2, 3)))).toEqual('(3, 2, 1)');
+});
+
+test('concat test', () => {
+  expect(listToString(concat(l(), l()))).toEqual('()');
+  expect(listToString(concat(l(1), l()))).toEqual('(1)');
+  expect(listToString(concat(l(), l(1)))).toEqual('(1)');
+  expect(listToString(concat(l(1, 2), l(3, 4, 5)))).toEqual('(1, 2, 3, 4, 5)');
 });

@@ -67,3 +67,27 @@ export const has = (list, element) => {
 
   return iter(list);
 };
+
+export const reverse = (list) => {
+  const iter = (current, result) => {
+    if (isEmpty(current)) {
+      return result;
+    }
+
+    return iter(tail(current), cons(head(current), result));
+  };
+
+  return iter(list, l());
+};
+
+export const concat = (list1, list2) => {
+  const iter = (current, result) => {
+    if (isEmpty(current)) {
+      return result;
+    }
+
+    return iter(tail(current), cons(head(current), result));
+  };
+
+  return iter(reverse(list1), list2);
+};
