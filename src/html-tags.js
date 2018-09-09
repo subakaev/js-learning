@@ -1,8 +1,10 @@
 import { cons, car, cdr } from './pairs/pairs';
 
 import {
-  l, isEmpty, cons as consList, head, tail,
+  l, isEmpty, cons as consList, head, tail, reverse,
 } from './pairs-list/pairs-list';
+
+import { reverseStr } from './algorithms';
 
 export const make = () => l();
 
@@ -27,3 +29,17 @@ export const toString = (dom) => {
 
   return iter(dom, '');
 };
+
+export const map = (func, dom) => {
+  const iter = (current, result) => {
+    if (isEmpty(current)) {
+      return reverse(result);
+    }
+
+    return iter(tail(current), cons(func(head(current)), result));
+  };
+
+  return iter(dom, l());
+};
+
+export const mirror = dom => map(element => node(name(element), reverseStr(value(element))), dom);
