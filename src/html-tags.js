@@ -4,7 +4,7 @@ import {
   l, isEmpty, cons as consList, head, tail, reverse,
 } from './pairs-list/pairs-list';
 
-import { reverseStr } from './algorithms';
+import { reverseStr, wc } from './algorithms';
 
 export const make = () => l();
 
@@ -87,3 +87,10 @@ export const emptyTagsCount = (tagName, dom) => {
 export const quotes = dom => map(element => value(element), filter(element => is('blockquote', element), dom));
 
 export const mirror = dom => map(element => node(name(element), reverseStr(value(element))), dom);
+
+export const extractHeaders = html => map(tag => node('p', value(tag)), filter(tag => is('h2', tag), html));
+
+export const wordsCount = (tagName, word, html) => {
+  const reduceFunc = (tag, acc) => acc + wc(word, value(tag));
+  return reduce(reduceFunc, 0, filter(tag => is(tagName, tag), html));
+};
