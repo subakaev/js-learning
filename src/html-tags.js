@@ -13,6 +13,8 @@ export const node = (tagName, content) => cons(tagName, content);
 export const name = tag => car(tag);
 export const value = tag => cdr(tag);
 
+export const is = (tagName, tag) => name(tag) === tagName;
+
 export const append = (dom, tag) => consList(tag, dom);
 
 export const toString = (dom) => {
@@ -41,5 +43,21 @@ export const map = (func, dom) => {
 
   return iter(dom, l());
 };
+
+export const filter = (func, dom) => {
+  const iter = (elements, result) => {
+    if (isEmpty(elements)) {
+      return reverse(result);
+    }
+
+    const headTag = head(elements);
+
+    return iter(tail(elements), func(headTag) ? cons(headTag, result) : result);
+  };
+
+  return iter(dom, l());
+};
+
+export const quotes = dom => map(element => value(element), filter(element => is('blockquote', element), dom));
 
 export const mirror = dom => map(element => node(name(element), reverseStr(value(element))), dom);
