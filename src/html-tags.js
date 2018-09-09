@@ -58,6 +58,24 @@ export const filter = (func, dom) => {
   return iter(dom, l());
 };
 
+export const reduce = (func, acc, dom) => {
+  const iter = (elements, result) => {
+    if (isEmpty(elements)) {
+      return result;
+    }
+
+    return iter(tail(elements), func(head(elements), result));
+  };
+
+  return iter(dom, acc);
+};
+
+export const emptyTagsCount = (tagName, dom) => {
+  const reduceFunc = (element, acc) => (is(tagName, element) && value(element) === '' ? acc + 1 : acc);
+
+  return reduce(reduceFunc, 0, dom);
+};
+
 export const quotes = dom => map(element => value(element), filter(element => is('blockquote', element), dom));
 
 export const mirror = dom => map(element => node(name(element), reverseStr(value(element))), dom);
