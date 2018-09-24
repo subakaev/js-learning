@@ -33,5 +33,7 @@
     "jest": "^23.5.0",
     "jest-cli": "^23.5.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "lodash": "^4.17.11"
+  }
 }
