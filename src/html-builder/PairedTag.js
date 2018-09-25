@@ -1,14 +1,17 @@
-export default class PairedTag {
+import Node from './Node';
+
+export default class PairedTag extends Node {
   constructor(name, attributes, body, children) {
-    this.name = name;
-    this.attributes = attributes || {};
+    super(name, attributes);
     this.body = body || '';
     this.children = children || [];
   }
 
   toString() {
-    const attrsStr = Object.keys(this.attributes).map(x => ` ${x}="${this.attributes[x]}"`).join('');
+    const content = this.children.length > 0
+      ? this.children.map(x => x.toString()).join('')
+      : this.body;
 
-    return `<${this.name}${attrsStr}>${this.body}${this.children.map(x => x.toString()).join('')}</${this.name}>`;
+    return `<${this.getName()}${this.attributesToString()}>${content}</${this.getName()}>`;
   }
 }
