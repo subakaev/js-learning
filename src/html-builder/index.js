@@ -25,12 +25,10 @@ const typeActions = [
 
 const getTypeAction = value => typeActions.find(({ isMatch }) => isMatch(value));
 
-const buildNode = (name, attributes, body, children) => {
-  if (singleTagsList.has(name)) {
-    return new SingleTag(name, attributes);
-  }
+const buildNode = (name, ...args) => {
+  const C = singleTagsList.has(name) ? SingleTag : PairedTag;
 
-  return new PairedTag(name, attributes, body, children);
+  return new C(name, ...args);
 };
 
 const parse = (data) => {
