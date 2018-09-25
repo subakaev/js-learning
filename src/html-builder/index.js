@@ -55,19 +55,3 @@ const parse = (data) => {
 };
 
 export default parse;
-
-// export const render = (tag) => {
-//   const {
-//     name, attributes, body, children,
-//   } = tag;
-
-//   const attrsLine = Object.keys(attributes).map(key => ` ${key}="${attributes[key]}"`).join('');
-
-//   if (singleTagsList.has(name)) {
-//     return `<${name}${attrsLine}>`;
-//   }
-
-//   const content = children.length > 0 ? children.map(item => render(item)).join('') : body;
-
-//   return `<${name}${attrsLine}>${content}</${name}>`;
-// };
